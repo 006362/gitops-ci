@@ -71,8 +71,8 @@ jobs:
           context: ./
           # Note: tags has to be all lower-case
           tags: |
-            imrishav/gitops01:${{ github.sha }} 
-            ghcr.io/imrishav/gitops01:${{ github.sha }}
+            kaemaros/react-app:${{ github.sha }} 
+            ghcr.io/kaemaros/react-app:${{ github.sha }}
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
@@ -85,15 +85,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: imrishav/gitops-infra
+          repository: 006362/gitops-infra
           ref: 'main'
           token: ${{ secrets.G_TOKEN }}
       - name: setup git config
         run: |
-          git config --global user.email "rishav@live.co.uk"
-          git config --global user.name "imrishav"
+          git config --global user.email "aukrit.k@cdg.co.th"
+          git config --global user.name "006362"
           echo ${{ github.sha }}
-          sed -i "s#${{ github.actor }}.*#${{ github.actor }}/gitops01:${{ github.sha }}#g" deployment.yaml
+          sed -i "s#${{ github.actor }}.*#${{ github.actor }}/react-app:${{ github.sha }}#g" deployment.yaml
           git add -A
           git commit -am "Update image for - ${{ github.sha }}"
       - run: echo ${{ github }}

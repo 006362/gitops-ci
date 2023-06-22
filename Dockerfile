@@ -1,4 +1,4 @@
-FROM node:latest as Build
+FROM node:latest as Build 
 
 WORKDIR /app
 
@@ -15,4 +15,4 @@ WORKDIR /usr/share/nginx/html
 
 COPY --from=Build /app/build ./
 
-CMD [ "nginx", "-g", "daemon off;" ]
+CMD [ "nginx", "-g",  "daemon off;" ]
